@@ -1,29 +1,28 @@
 <script>
     import { _ } from 'svelte-i18n';
-    import { Link } from 'svelte-routing';
     import { API } from "../stores/api";
     import { PageTitle } from "../stores/status";
     import { formatTotalTime, formatSongQuality, formatFilesize } from '../logic/helper';
 
     import Rating from '../components/rating.svelte';
-    import Actions2 from '../components/action/actions.svelte';
+    import Actions from '../components/action/actions.svelte';
     import Genres from '../components/genre/genres.svelte';
     import ThirdPartyServices from '../components/thirdPartyServices.svelte';
     import ArtistList from '../components/artist/artistList.svelte';
 
-    export let id;
+    export let params;
 
     let song;
 
     let title = $_('text.song');
     $PageTitle = title;
 
-    $: if (id) {
+    $: if (params.id) {
         loadData();
     }
 
     async function loadData() {
-        song = await $API.song({ filter: id });
+        song = await $API.song({ filter: params.id });
     }
 </script>
 
@@ -31,7 +30,7 @@
     <title>{`${song?.title} by ${song?.artist?.name}` || $_('text.loading')} (song)</title>
 </svelte:head>
 
-{#key id || 0}
+{#key params.id || 0}
     {#if song?.id}
         <div class="info">
             <h1 class="title">{song.title}</h1>
@@ -43,7 +42,7 @@
 
             <Genres genres="{song.genre}" />
 
-            <Actions2
+            <Actions
                 type="song"
                 mode="fullButtons"
                 id="{song.id}"
@@ -55,15 +54,15 @@
             {#if song.artists?.length > 1}
                 <span class="field">{$_('text.songArtists')}</span> <span><ArtistList artists={song.artists} /></span>
             {:else if song.artist.name}
-                <span class="field">{$_('text.songArtist')}</span> <span><Link to="artists/{song.artist.id}">{song.artist.name}</Link></span>
+                <span class="field">{$_('text.songArtist')}</span> <span><a href="#/artists/{song.artist.id}">{song.artist.name}</a></span>
             {/if}
 
             {#if song.albumartist.name}
-                <span class="field">{$_('text.albumArtist')}</span> <span><Link to="artists/{song.albumartist.id}">{song.albumartist.name}</Link></span>
+                <span class="field">{$_('text.albumArtist')}</span> <span><a href="#/artists/{song.albumartist.id}">{song.albumartist.name}</a></span>
             {/if}
 
             {#if song.album.name}
-                <span class="field">{$_('text.album')}</span> <span><Link to="albums/{song.album.id}">{song.album.name}</Link></span>
+                <span class="field">{$_('text.album')}</span> <span><a href="#/albums/{song.album.id}">{song.album.name}</a></span>
             {/if}
 
             {#if song.track}

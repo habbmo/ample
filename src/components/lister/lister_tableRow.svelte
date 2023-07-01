@@ -1,6 +1,6 @@
 <script>
+    import { _ } from 'svelte-i18n';
     import { getContext } from 'svelte';
-    import { Link } from 'svelte-routing';
 
     import { formatTotalTime, formatSongQuality, formatFilesize, cleanArtURL } from '../../logic/helper';
 
@@ -14,15 +14,13 @@
     export let item;
 
     import Rating from '../../components/rating.svelte';
-    import Actions2 from '../../components/action/actions.svelte';
+    import Actions from '../../components/action/actions.svelte';
     import Genres from '../../components/genre/genres.svelte';
     import ArtistList from '../../components/artist/artistList.svelte';
 
     import SVGArtist from "/src/images/artist.svg";
     import SVGAlbum from "/src/images/album.svg";
     import SVGSong from "/src/images/music_note.svg";
-    import SVGYear from "/src/images/year.svg";
-    import SVGGenre from "/src/images/label.svg";
     import SVGCurrent from "/src/images/play_circle.svg";
 
     const { _type, visibleColumns, selectedCount, isEditMode, dataDisplay, _showArt } = getContext(contextKey);
@@ -98,25 +96,25 @@
             {/if}
 
             {#if $_type === "artist"}
-                <Link to="artists/{item.id}">
+                <a href="#/artists/{item.id}">
                     <span>{item.name}</span>
-                </Link>
+                </a>
             {:else if $_type === "album"}
-                <Link to="albums/{item.id}">
+                <a href="#/albums/{item.id}">
                     <span>{item.name}</span>
-                </Link>
+                </a>
             {:else if $_type === "genre"}
-                <Link to="genres/{item.id}">
-                    <SVGGenre class="inline" /> {item.name}
-                </Link>
+                <a href="#/genres/{item.id}">
+                    {item.name}
+                </a>
             {:else if $_type === "playlist"}
-                <Link to="playlists/{item.id}">
+                <a href="#/playlists/{item.id}">
                     {item.name}
-                </Link>
+                </a>
             {:else if $_type === "smartlist"}
-                <Link to="smartlists/{item.id}">
+                <a href="#/smartlists/{item.id}">
                     {item.name}
-                </Link>
+                </a>
             {:else if $_type === "song" || $_type === "playlist_songs"}
                 {#if $CurrentMedia?.id === item.id}
                     <span class="current-icon">
@@ -124,9 +122,9 @@
                     </span>
                 {/if}
 
-                <Link to="song/{item.id}">
+                <a href="#/song/{item.id}">
                     {item.name}
-                </Link>
+                </a>
             {/if}
         {/if}
 
@@ -135,13 +133,13 @@
         {/if}
 
         {#if col.id === "album"}
-            <Link to="albums/{item.album.id}">
-                <SVGAlbum class="inline"/> {item.album.name}
-            </Link>
+            <a href="#/albums/{item.album.id}">
+                {item.album.name}
+            </a>
         {/if}
 
         {#if col.id === "date"}
-            <Link to="albums/year/{item.year}"><SVGYear class="inline"/> {item.year || 'None'}</Link>
+            <a href="#/albums/year/{item.year}">{item.year || $_('text.none')}</a>
         {/if}
 
         {#if col.id === "length"}
@@ -175,15 +173,15 @@
         {/if}
 
         {#if col.id === "genreArtistsCount"}
-            <Link to="genres/{item.id}" on:click={() => {$TabHistory['genre'] = 'artists'}}><SVGArtist class="inline" /> {item.artists}</Link>
+            <a href="#/genres/{item.id}" on:click={() => {$TabHistory['genre'] = 'artists'}}><SVGArtist class="inline" /> {item.artists}</a>
         {/if}
 
         {#if col.id === "genreAlbumsCount"}
-            <Link to="genres/{item.id}" on:click={() => {$TabHistory['genre'] = 'albums'}}><SVGAlbum class="inline" /> {item.albums}</Link>
+            <a href="#/genres/{item.id}" on:click={() => {$TabHistory['genre'] = 'albums'}}><SVGAlbum class="inline" /> {item.albums}</a>
         {/if}
 
         {#if col.id === "genreSongsCount"}
-            <Link to="genres/{item.id}" on:click={() => {$TabHistory['genre'] = 'songs'}}><SVGSong class="inline" /> {item.songs}</Link>
+            <a href="#/genres/{item.id}" on:click={() => {$TabHistory['genre'] = 'songs'}}><SVGSong class="inline" /> {item.songs}</a>
         {/if}
 
         {#if col.id === "owner"}
@@ -211,7 +209,7 @@
         {/if}
 
         {#if col.id === "actions"}
-            <Actions2
+            <Actions
                 type="{$_type}"
                 mode="miniButtons"
                 id="{item.id}"
@@ -248,7 +246,7 @@
 
     :global(.lister-container .header .cell[data-type=number]),
     :global(.lister-container .header .cell[data-type=time]) {
-        padding-inline-end: 25px;
+        justify-content: end;
     }
 
     :global(.lister-container .cell[data-type=number]),
@@ -262,9 +260,7 @@
     }
 
     .reorder button {
-        /*border: 1px solid lime;*/
         height: unset;
         padding: 0;
-        /*display: block;*/
     }
 </style>

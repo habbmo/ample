@@ -1,8 +1,7 @@
 <script>
     import { _ } from 'svelte-i18n';
-    import { Link } from "svelte-routing";
     import { cleanArtURL } from "../../logic/helper";
-    import Actions2 from '../../components/action/actions.svelte';
+    import Actions from '../../components/action/actions.svelte';
     import Rating from '../../components/rating.svelte';
     import PlaylistArt from '../../components/playlist/playlist_art.svelte';
 
@@ -20,9 +19,9 @@
     {#if playlist}
         <div class="top">
             <div class="title">
-                <Link to="{parentUrl}/{playlist.id}" title="{playlist.name}">
+                <a href="#/{parentUrl}/{playlist.id}" title="{playlist.name}">
                     {playlist.name}
-                </Link>
+                </a>
             </div>
         </div>
 
@@ -31,9 +30,9 @@
                 <span class="private badge badge--danger">{$_('text.private')}</span>
             {/if}
 
-            <Link to="{parentUrl}/{playlist.id}" title="{playlist.name}">
+            <a href="#/{parentUrl}/{playlist.id}" title="{playlist.name}">
                 <PlaylistArt bind:playlist={playlist} fallback="{cleanArtURL(playlist.art)}" />
-            </Link>
+            </a>
         </div>
 
         <div class="details">
@@ -48,7 +47,7 @@
             {/if}
 
             <div class="actions">
-                <Actions2
+                <Actions
                     type="playlist"
                     mode="miniButtons"
                     showShuffle={playlist.items > 1}
@@ -71,7 +70,7 @@
 
         <div class="details">
             <div class="actions">
-                <Actions2 type="playlist" mode="miniButtons" />
+                <Actions type="playlist" mode="miniButtons" />
             </div>
         </div>
     {/if}

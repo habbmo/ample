@@ -1,27 +1,25 @@
 <script>
     import { _ } from 'svelte-i18n';
-    import { Link } from 'svelte-routing';
     import { PageLoadedKey, PageTitle, Theme } from '../stores/status';
     import { serverURL } from "../stores/server";
     import { getAlbum } from "../logic/album";
     import { cleanArtURL, formatTotalTime } from "../logic/helper";
     import MusicBrainz from "../logic/musicbrainz";
-
     import Rating from '../components/rating.svelte';
     import ThirdPartyServices from '../components/thirdPartyServices.svelte';
-    import Actions2 from '../components/action/actions.svelte';
+    import Actions from '../components/action/actions.svelte';
     import Genres from '../components/genre/genres.svelte';
-    import Lister2 from '../components/lister/lister.svelte';
+    import Lister from '../components/lister/lister.svelte';
     import AlbumsAround from '../components/album/albumsAround.svelte';
 
-    export let id;
+    export let params = {}
 
     let mb = new MusicBrainz;
     let theme;
     let loading = true;
 
     $: theme = $Theme;
-    $: if (id || $PageLoadedKey) {
+    $: if (params.id || $PageLoadedKey) {
         loadData();
     }
 
@@ -31,7 +29,7 @@
 
     async function loadData() {
         loading = true;
-        album = await getAlbum({id: id, withTracks: true, artAnalysis: true});
+        album = await getAlbum({id: params.id, withTracks: true, artAnalysis: true});
         album.discsubtitles = [];
 
         if (mb.hasMBID(album)) {
@@ -103,11 +101,11 @@
                                 {/if}
                                 <h1 class="title">{album.name}</h1>
                                 <div class="artist">
-                                    <Link to="artists/{album.artist.id}">{album.artist.name}</Link>
+                                    <a href="#/artists/{album.artist.id}">{album.artist.name}</a>
                                 </div>
                             </div>
 
-                            <Actions2
+                            <Actions
                                     type="album"
                                     mode="fullButtons"
                                     id="{album.id}"
@@ -117,7 +115,7 @@
 
                             <div class="meta">
                                 <div class="entry">
-                                    <span class="value"><Link to="albums/year/{album.year}" title="{album.year}">{album.year}</Link></span>
+                                    <span class="value"><a href="#/albums/year/{album.year}" title="{album.year}">{album.year}</a></span>
                                     <span class="field">{$_('text.year')}</span>
                                 </div>
 
@@ -148,22 +146,22 @@
                         {#each [...album.ampleSongs] as [key, value]}
                             {@const subtitle = (album.discsubtitles.length > 0) ? album.discsubtitles.find((disc) => disc.position === key).title : null}
                             <section>
-                                <Lister2
-                                        data={value}
-                                        type="song"
-                                        tableOnly={true}
-                                        zone="album-contents"
-                                        showArtist={album.artist.name === "Various Artists"}
-                                        showArt={false}
-                                        discSubtitle={subtitle}
-                                        actionData={{
-                                    disable: [...album.ampleSongs].length < 2,
-                                    type: "album",
-                                    id: album.id,
-                                    mode: "miniButtons",
-                                    showShuffle: value.length > 1,
-                                    data: Object.create({songs: value})
-                                }}
+                                <Lister
+                                    data={value}
+                                    type="song"
+                                    tableOnly={true}
+                                    zone="album-contents"
+                                    showArtist={album.artist.name === "Various Artists"}
+                                    showArt={false}
+                                    discSubtitle={subtitle}
+                                    actionData={{
+                                        disable: [...album.ampleSongs].length < 2,
+                                        type: "album",
+                                        id: album.id,
+                                        mode: "miniButtons",
+                                        showShuffle: value.length > 1,
+                                        data: Object.create({songs: value})
+                                    }}
                                 />
                             </section>
                         {/each}

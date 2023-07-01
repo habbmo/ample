@@ -2,7 +2,7 @@
     import { _ } from 'svelte-i18n';
     import { getContext } from "svelte";
     import { PageLoadedKey } from "../../stores/status";
-    import Actions2 from '../../components/action/actions.svelte';
+    import Actions from '../../components/action/actions.svelte';
     import PlaylistRemoveFrom from '../playlist/playlist_removeFrom.svelte';
     import PlaylistReorder from '../playlist/playlist_reorder.svelte';
     import PlaylistRefresh from '../playlist/playlist_refresh.svelte';
@@ -25,7 +25,7 @@
 <div class="lister-actions" bind:this={actionsBind} class:not-empty={actionsBind?.firstElementChild}>
     {#if !$_actionData.disable}
         <div class="group">
-            <Actions2 mode="fullButtons" {...$_actionData} />
+            <Actions mode="fullButtons" {...$_actionData} />
         </div>
     {/if}
 
@@ -35,8 +35,8 @@
 
     {#if !$_tableOnly}
         <div class="group">
-            <button class="button" on:click={() => { setTableDisplay(true) }} class:active={$_displayAsTable}><SVGList /> {$_('text.list')}</button>
-            <button class="button" on:click={() => { setTableDisplay(false) }} class:active={!$_displayAsTable}><SVGGrid /> {$_('text.grid')}</button>
+            <button class="button" on:click={() => { setTableDisplay(true) }} class:active={$_displayAsTable}><SVGList style="transform: scale(0.7)" /> {$_('text.list')}</button>
+            <button class="button" on:click={() => { setTableDisplay(false) }} class:active={!$_displayAsTable}><SVGGrid style="transform: scale(0.7)" /> {$_('text.grid')}</button>
         </div>
     {/if}
 
@@ -62,9 +62,10 @@
 <style>
     .lister-actions {
         display: flex;
-        gap: var(--spacing-lg);
         z-index: 1;
         align-items: center;
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
     }
 
     /* collapses space if empty */
@@ -72,13 +73,17 @@
         margin-block-end: var(--spacing-lg);
     }
 
-    .lister-actions > .group {
-        display: flex;
-        gap: var(--spacing-sm);
-    }
-
     .disc-subtitle {
         color: var(--color-highlight);
         font-weight: 700;
+    }
+
+    .lister-actions > .group,
+    .lister-actions :global(.c-actions) {
+        display: contents;
+    }
+
+    button {
+        margin: 0;
     }
 </style>

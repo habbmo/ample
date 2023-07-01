@@ -1,11 +1,10 @@
 <script>
     import { _ } from 'svelte-i18n';
-    import { Link } from "svelte-routing";
     import { serverURL } from "../../stores/server";
     import { cleanArtURL } from "../../logic/helper";
 
     import Rating from '../../components/rating.svelte';
-    import Actions2 from '../../components/action/actions.svelte';
+    import Actions from '../../components/action/actions.svelte';
 
     export let data = null; // needed for cardList dynamic components
 
@@ -16,7 +15,7 @@
 <div class="album-card card">
     {#if album}
         <div class="image-container">
-            <Link to="albums/{album.id}" title="{album.name}">
+            <a href="#/albums/{album.id}" title="{album.name}">
                 <img class="image"
                     src="{cleanArtURL(album.art)}&thumb=22"
                     alt="Image of {album.name}"
@@ -25,7 +24,7 @@
                     data-id="art-album-{album.id}"
                     on:error={e => { e.onerror=null; e.target.src=$serverURL + '/image.php?object_id=0&object_type=album&thumb=22' }}
                 />
-            </Link>
+            </a>
         </div>
 
         <div class="info">
@@ -33,11 +32,11 @@
                 <div class="details">
                         {#if album.year}
                             <div class="date secondary-info">
-                                <Link to="albums/year/{album.year}" title="{album.year}">{album.year}</Link>
+                                <a href="#/albums/year/{album.year}" title="{album.year}">{album.year}</a>
                             </div>
                         {/if}
-                    <div class="title"><Link to="albums/{album.id}" title="{album.name}">{album.name}</Link></div>
-                    <div class="artist secondary-info"><Link to="artists/{album.artist.id}" title="{album.artist.name}">{album.artist.name}</Link></div>
+                    <div class="title"><a href="#/albums/{album.id}" title="{album.name}">{album.name}</a></div>
+                    <div class="artist secondary-info"><a href="#/artists/{album.artist.id}" title="{album.artist.name}">{album.artist.name}</a></div>
                 </div>
             </div>
 
@@ -47,7 +46,7 @@
                 </div>
 
                 <div class="actions">
-                    <Actions2
+                    <Actions
                         type="album"
                         mode="miniButtons"
                         id="{album.id}"
@@ -77,7 +76,7 @@
                 </div>
 
                 <div class="actions">
-                    <Actions2 type="album" mode="miniButtons" />
+                    <Actions type="album" mode="miniButtons" />
                 </div>
             </div>
         </div>

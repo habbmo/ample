@@ -1,8 +1,7 @@
 <script>
     import { onMount } from 'svelte';
-    import { Link } from "svelte-routing";
     import { TabHistory } from "../../stores/status";
-    import Actions2 from '../../components/action/actions.svelte';
+    import Actions from '../../components/action/actions.svelte';
 
     import SVGArtist from "/src/images/artist.svg";
     import SVGAlbum from "/src/images/album.svg";
@@ -24,18 +23,18 @@
 <div class="genre-card card" data-name="genre-{genre.name.replace(/\s+/g, '-').toLowerCase()}" style="--angle: {angle}deg">
     <div class="info">
         <div class="title genre-title" title="{genre.name}">
-            <Link to="genres/{genre.id}">{genre.name}</Link>
+            <a href="#/genres/{genre.id}">{genre.name}</a>
         </div>
 
         <div class="meta">
-            <Link to="genres/{genre.id}" on:click={() => {$TabHistory['genre'] = 'artists'}}><SVGArtist class="inline" /> {genre.artists}</Link>
-            <Link to="genres/{genre.id}" on:click={() => {$TabHistory['genre'] = 'albums'}}><SVGAlbum class="inline" /> {genre.albums}</Link>
-            <Link to="genres/{genre.id}" on:click={() => {$TabHistory['genre'] = 'songs'}}><SVGSong class="inline" /> {genre.songs}</Link>
+            <a href="#/genres/{genre.id}" on:click={() => {$TabHistory['genre'] = 'artists'}}><SVGArtist class="inline" /> {genre.artists}</a>
+            <a href="#/genres/{genre.id}" on:click={() => {$TabHistory['genre'] = 'albums'}}><SVGAlbum class="inline" /> {genre.albums}</a>
+            <a href="#/genres/{genre.id}" on:click={() => {$TabHistory['genre'] = 'songs'}}><SVGSong class="inline" /> {genre.songs}</a>
         </div>
 
         <div class="bottom">
             <div class="actions">
-                <Actions2
+                <Actions
                     type="artistGenre"
                     mode="miniButtons"
                     data={Object.create({name: genre.name})}
