@@ -274,5 +274,9 @@
   "text.randomAlbums": "Willekeurige albums",
   "text.quality": "Kwaliteit",
   "text.size": "Groote",
-  "text.type": "Type"
+  "text.type": "Type",
+  "text.versionWarning": "Deze versie van Ample ondersteunt alleen Ampache v6 en hoger. Versie {serverVersion} gedetecteerd.",
+  "text.apiKey": "API sleutel",
+  "text.edit": "Bewerk",
+  "text.password": "Wachtwoord"
 }
