@@ -307,5 +307,14 @@
   "text.license": "Licentie",
   "text.publisher": "Uitgever",
   "text.notificationAlternateVersions": "{versionCount} Alternatieve {versionCount, plural, =1 {versie} andere {versies}} gevonden",
-  "text.autoplay": "Automatisch Afspelen"
+  "text.autoplay": "Automatisch Afspelen",
+  "text.autoplayAddedItems": "{n} items toegevoegd aan wachtrij van {playlist}",
+  "text.mix": "Mix",
+  "text.notificationGainTagsMissing": "Tags voor volumeversterking ontbreken",
+  "text.notificationLyricsMissing": "Ontbrekende songteksten",
+  "text.notificationLyricsNotTimestamped": "Songtekst zonder tijdstempel",
+  "text.tagUpdateDone": "Bijgewerkt vanaf tags",
+  "text.serverURL": "Server-URL",
+  "text.none": "Geen",
+  "text.errorFatal": "Fatale fout: Controleer uw browserconsole op berichten"
 }
