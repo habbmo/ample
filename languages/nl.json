@@ -195,5 +195,8 @@
   "text.metadata": "Metadata",
   "text.metadataAlbum": "Album Metadata",
   "text.musicbrainz": "MusicBrainz",
-  "text.musicbrainzID": "MusicBrainz-ID"
+  "text.musicbrainzID": "MusicBrainz-ID",
+  "text.musicbrainzIDAlbum": "MusicBrainz-ID (Album)",
+  "text.musicbrainzIDArtist": "MusicBrainz-ID (artiest)",
+  "text.newest": "Nieuwste"
 }
