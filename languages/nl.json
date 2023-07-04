@@ -341,5 +341,6 @@
   "text.tagUpdateFail": "Updaten van tags mislukt",
   "text.tagUpdateStart": "Update van tags starten",
   "text.artUpdateStart": "Albumcover update starten",
-  "text.limitedItems": "{n} items afspelen"
+  "text.limitedItems": "{n} items afspelen",
+  "text.searchHasLoved": "Heeft liefgehad"
 }
