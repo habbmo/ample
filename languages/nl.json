@@ -216,7 +216,7 @@
   "text.missingVolumeTagsInfo": "Geef een melding als het momenteel afgespeelde nummer ReplayGain- of EBU R128-tags mist",
   "text.playLast": "Toevoegen aan wachtrij",
   "text.playlistConfirmRemoval": "Bevestig het verwijderen van de afspeellijst",
-  "text.playlistJust": "Gewoon {naam}",
+  "text.playlistJust": "Alleen {naam}",
   "text.queueClearPlayed": "Leeg alle gespeelde",
   "text.queuePin": "Wachtrij vastzetten",
   "text.queueShowCurrent": "Laat zien wat er wordt afgespeeld",
@@ -335,5 +335,9 @@
   "text.myRatingAlbum": "Mijn beoordeling (Album)",
   "text.myRatingArtist": "Mijn beoordeling (Artiest)",
   "text.myRatingSong": "Mijn beoordeling (Lied)",
-  "text.date": "Datum"
+  "text.date": "Datum",
+  "text.notificationRatingMissing": "Ontbrekende liedjes beoordeling",
+  "text.skippedItemsBelow": "{itemCount, plural, =1 {# Item} other {# Items}} onder {starCount, plural, =1 {# ster} other {# sterren}} overgeslagen",
+  "text.tagUpdateFail": "Updaten van tags mislukt",
+  "text.tagUpdateStart": "Update van tags starten"
 }
