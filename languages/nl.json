@@ -339,5 +339,7 @@
   "text.notificationRatingMissing": "Ontbrekende liedjes beoordeling",
   "text.skippedItemsBelow": "{itemCount, plural, =1 {# Item} other {# Items}} onder {starCount, plural, =1 {# ster} other {# sterren}} overgeslagen",
   "text.tagUpdateFail": "Updaten van tags mislukt",
-  "text.tagUpdateStart": "Update van tags starten"
+  "text.tagUpdateStart": "Update van tags starten",
+  "text.artUpdateStart": "Albumcover update starten",
+  "text.limitedItems": "{n} items afspelen"
 }
