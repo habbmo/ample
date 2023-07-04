@@ -342,5 +342,7 @@
   "text.tagUpdateStart": "Update van tags starten",
   "text.artUpdateStart": "Albumcover update starten",
   "text.limitedItems": "{n} items afspelen",
-  "text.searchHasLoved": "Heeft liefgehad"
+  "text.searchHasLoved": "Heeft liefgehad",
+  "text.artUpdateDone": "Albumcover bijgewerkt",
+  "text.artUpdateFail": "Albumcover updaten mislukt"
 }
