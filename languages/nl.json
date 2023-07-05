@@ -70,7 +70,7 @@
   "text.playlistGone": "Afspeellijst bestaat niet meer",
   "text.playlistNew": "Nieuwe afspeellijst",
   "text.playlistNoneSelected": "Geen afspeellijst geselecteerd",
-  "text.playlistUpdated": "Playlist geüpdated",
+  "text.playlistUpdated": "Playlist bijgewerkt",
   "text.playlist": "Afspeellijst",
   "text.playlists": "Afspeellijsten",
   "text.previous": "Vorige",
@@ -133,7 +133,7 @@
   "text.searchLessThan": "Is kleiner dan",
   "text.updateArtistImage": "Werk artiesten plaatje bij",
   "text.updateAlbumArt": "Werk albumcover bij",
-  "text.updateFromTags": "Update van Tags",
+  "text.updateFromTags": "Bijwerken vanaf Tags",
   "text.versionsOf": "Versies van {songTitle} - {artistName}",
   "text.versionsOfHTML": "Versies van <em>{songTitle}</em> by <em>{artistName}</em>",
   "text.volumeNormalize": "Normaliseer Volume",
@@ -338,11 +338,11 @@
   "text.date": "Datum",
   "text.notificationRatingMissing": "Ontbrekende liedjes beoordeling",
   "text.skippedItemsBelow": "{itemCount, plural, =1 {# Item} other {# Items}} onder {starCount, plural, =1 {# ster} other {# sterren}} overgeslagen",
-  "text.tagUpdateFail": "Updaten van tags mislukt",
-  "text.tagUpdateStart": "Update van tags starten",
-  "text.artUpdateStart": "Albumcover update starten",
+  "text.tagUpdateFail": "Bijwerken van tags mislukt",
+  "text.tagUpdateStart": "Bijwerken van tags starten",
+  "text.artUpdateStart": "Albumcover bijwerken starten",
   "text.limitedItems": "{n} items afspelen",
   "text.searchHasLoved": "Heeft liefgehad",
   "text.artUpdateDone": "Albumcover bijgewerkt",
-  "text.artUpdateFail": "Albumcover updaten mislukt"
+  "text.artUpdateFail": "Albumcover bijwerken mislukt"
 }
